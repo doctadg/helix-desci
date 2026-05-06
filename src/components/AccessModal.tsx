@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { ScrambleText } from "@/components/ui/ScrambleText";
 import {
-  ACCESS_CODE,
   ACCESS_EVENT,
   checkCode,
   isUnlocked,
@@ -257,15 +256,6 @@ export function AccessModal() {
                 <span className="ml-auto text-mono-sm text-[var(--color-muted)]">
                   esc to close
                 </span>
-              </div>
-
-              {/* Demo hint — same surface used on /access */}
-              <div className="mt-5 pt-4 border-t border-[var(--color-line)] text-mono-sm text-[var(--color-muted)] flex items-center gap-2">
-                <span className="block w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]" />
-                demo · code is{" "}
-                <code className="px-1.5 py-0.5 rounded bg-[rgba(41,86,248,0.12)] text-[var(--color-accent-2)] font-mono">
-                  {ACCESS_CODE}
-                </code>
               </div>
             </form>
           </motion.div>

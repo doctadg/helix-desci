@@ -13,7 +13,7 @@ import Link from "next/link";
 import { AnimatedText } from "@/components/ui/AnimatedText";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { ScrambleText } from "@/components/ui/ScrambleText";
-import { checkCode, isUnlocked, unlock, ACCESS_CODE } from "@/lib/access";
+import { checkCode, isUnlocked, unlock } from "@/lib/access";
 
 export default function AccessPage() {
   const router = useRouter();
@@ -371,22 +371,6 @@ export default function AccessPage() {
           </div>
         </motion.div>
       </section>
-
-      {/* Demo hint pinned bottom-left so the page is usable for graders */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.6, duration: 0.6 }}
-        className="relative wrap z-10 pb-6"
-      >
-        <div className="text-mono-sm text-[var(--color-muted)] flex items-center gap-2">
-          <span className="block w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]" />
-          demo · code is{" "}
-          <code className="px-1.5 py-0.5 rounded bg-[rgba(41,86,248,0.12)] text-[var(--color-accent-2)] font-mono">
-            {ACCESS_CODE}
-          </code>
-        </div>
-      </motion.div>
     </main>
   );
 }
