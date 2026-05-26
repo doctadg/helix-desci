@@ -1,9 +1,15 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "fs/promises";
+import path from "path";
 
 export const size = { width: 64, height: 64 };
 export const contentType = "image/png";
 
-export default function Icon() {
+export default async function Icon() {
+  const helixBuffer = await readFile(
+    path.join(process.cwd(), "public", "helix.png")
+  );
+
   return new ImageResponse(
     (
       <div
@@ -42,24 +48,14 @@ export default function Icon() {
           }}
         />
 
-        <svg viewBox="0 0 24 24" width="44" height="44" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#6A8AFF" />
-              <stop offset="100%" stopColor="#2956F8" />
-            </linearGradient>
-          </defs>
-          <path
-            d="M5 4 Q12 12 5 20 M19 4 Q12 12 19 20"
-            stroke="url(#g)"
-            fill="none"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-          />
-          <circle cx="12" cy="6" r="1.6" fill="#6A8AFF" />
-          <circle cx="12" cy="12" r="1.6" fill="#F2F1ED" />
-          <circle cx="12" cy="18" r="1.6" fill="#2956F8" />
-        </svg>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={`data:image/png;base64,${helixBuffer.toString("base64")}`}
+          width={40}
+          height={40}
+          alt=""
+          style={{ objectFit: "contain" }}
+        />
       </div>
     ),
     { ...size }
