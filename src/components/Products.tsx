@@ -225,6 +225,43 @@ export function Products() {
             style={{ scaleX: scrollYProgress }}
           />
         </div>
+
+        {/* Scroll hint */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-[var(--z-section-sticky)] flex flex-col items-center gap-2"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.2, duration: 0.6 }}
+        >
+          {/* Glow backdrop */}
+          <div
+            className="absolute -inset-4 rounded-full pointer-events-none"
+            style={{
+              background: "radial-gradient(circle, var(--color-accent-2) 0%, transparent 70%)",
+              opacity: 0.07,
+              filter: "blur(16px)",
+            }}
+          />
+          <motion.span
+            className="relative text-mono-sm text-[var(--color-fg)] tracking-[0.25em] font-medium"
+            style={{ textShadow: "0 0 10px var(--color-accent-2)" }}
+            animate={{ opacity: [0.7, 1, 0.7] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            KEEP SCROLLING
+          </motion.span>
+          <motion.svg
+            width="28"
+            height="28"
+            viewBox="0 0 28 28"
+            fill="none"
+            style={{ filter: "drop-shadow(0 0 5px var(--color-accent-2))" }}
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <path d="M7 10L14 18L21 10" stroke="var(--color-fg)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </motion.svg>
+        </motion.div>
       </div>
     </section>
   );
